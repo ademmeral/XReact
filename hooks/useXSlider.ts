@@ -1,7 +1,6 @@
 // https://github.com/ademmeral/XReact/hooks/useXSlider
 
 import { useEffect } from "react";
-import xSmoothScroll from "./xSmoothScroll";
 
 type PropTypes = {
   ref : React.MutableRefObject<HTMLElement | null>,
@@ -52,16 +51,14 @@ export function useSlider({ref, classNames : {list, arrows}}:PropTypes) {
           : rightArrowParent?.classList.add(`${arrows}_hidden`);
       } // handleIcons
 
-      let scrollTarget = wrapperList.scrollLeft;
       const handleArrowsClick = (e: Event) => {
         const target = e.currentTarget as HTMLDivElement;
         target.classList.contains(`${arrows}_left`)
-          ? scrollTarget -= wrapperList.clientWidth
+          ? wrapperList.scrollLeft -= wrapperList.clientWidth
           : target.classList.contains(`${arrows}_right`)
-            ? scrollTarget += wrapperList.clientWidth
+            ? wrapperList.scrollLeft += wrapperList.clientWidth
             : wrapperList.scrollLeft = 0;
         handleIcons();
-        xSmoothScroll(wrapperList, 'x', scrollTarget);
       }
 
       // Handling draggability of UL Element
@@ -81,11 +78,10 @@ export function useSlider({ref, classNames : {list, arrows}}:PropTypes) {
         ['scroll', handleScroll]
       );
 
+      // I find for loop sexier than forEach
       for (const [event, listener] of parentEvents)
         wrapperList.addEventListener(event as string, listener as EventListener);
 
-      // Adding EventListener to Arrows
-      // I find for loop sexier than forEach
       for (const arrow of arrowElements)
         arrow.addEventListener('click', handleArrowsClick);
 
