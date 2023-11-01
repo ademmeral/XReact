@@ -1,0 +1,76 @@
+.xrselect_container > *{
+  background: none;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.xrselect_container {
+  position: relative;
+  width: max-content;
+  min-width: 200px;
+}
+.xrselect_toggle {
+  width: 100%;
+  height: 100%;
+  padding: .5rem;
+
+  position: relative;
+
+  cursor: pointer;
+  appearance: none;
+
+  border: 2px solid transparent;
+  outline: none;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: left;
+
+  white-space: nowrap;
+}
+
+.xrselect_arrow {
+  position: absolute;
+  right: 5px;
+  top: calc(50% + 3px);
+  background: transparent;
+  transform: translate(-50%, -50%);
+  border: 6px solid transparent;
+  border-top-color: gray;
+  z-index: 1;
+}
+
+.xrselect_toggle.xrselect_active {
+  border: 2px solid dodgerblue;
+}
+
+.xrselect_toggle.xrselect_active .xrselect_arrow {
+  top: calc(50% - 3px);
+  border-color: transparent;
+  border-bottom-color: gray;
+}
+
+.xrselect_list {
+  list-style: none;
+
+  width: 100% !important;
+  height: max-content;
+  /* padding: .25rem; */
+
+  position: absolute;
+  top: calc(100% + 3px);
+  left: 0;
+  z-index: 999;
+
+  overflow: hidden;
+}
+
+.xrselect_options {
+  outline: none;
+  padding: .5rem;
+  cursor: pointer;
+}
+
+.xrselect_list :where(li:hover, li:focus) {
+  opacity: .6;
+}
