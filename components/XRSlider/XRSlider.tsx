@@ -14,7 +14,7 @@ type PropsType = {
   id? : string,
 }
 
-function Slider({children, left, right, className, id}: PropsType) {
+function XRSlider({children, left, right, className, id}: PropsType) {
   const ref = useRef(null);
   useSlider(ref) // returns nothing = undefined
   return (
@@ -40,5 +40,4 @@ function Slider({children, left, right, className, id}: PropsType) {
   )
 }
 
-const XR = { Slider }
-export default XR;
+export default XRSlider;

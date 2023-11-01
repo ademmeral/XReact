@@ -17,7 +17,7 @@ type PropsType = {
   id? : string,
 };
 
-let Select = ({ ...p }: PropsType) => {
+let XRSelect = ({ ...p }: PropsType) => {
   const selectionRef = useRef(null);
   const [selectedValue, isExpanded] = useXSelect(selectionRef, p.onChanged);
   // console.log('rendering...')
@@ -81,8 +81,7 @@ let Select = ({ ...p }: PropsType) => {
     </div>
   );
 }
-const XR = { Select }
-export default XR;
+export default XRSelect;
 
 /***** EXAMPLE USAGE *****/
 /*

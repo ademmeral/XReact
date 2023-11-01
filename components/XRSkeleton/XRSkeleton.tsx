@@ -13,7 +13,7 @@ type PropsType = {
   id?: string,
 }
 
-function Skeleton({h, w, amount, rounded, className, id} : PropsType) {
+function XRSkeleton({h, w, amount, rounded, className, id} : PropsType) {
 
   const styleLi = {
     borderRadius : !rounded ? 0 : typeof rounded === 'string' ? rounded : `${rounded}px`,
@@ -38,5 +38,4 @@ function Skeleton({h, w, amount, rounded, className, id} : PropsType) {
     </div>
   )
 }
-const XR = { Skeleton }
-export default XR
+export default XRSkeleton

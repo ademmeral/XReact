@@ -9,7 +9,7 @@ type PropsType = {
   className ?: string,
   id?: string|number
 }
-function Spinner({size, color, thickness, className, id}: PropsType) {
+function XRSpinner({size, color, thickness, className, id}: PropsType) {
   const wrappertStyle = {
     width : size ? `${size}px` : '100px',
     height : size ? `${size}px` : '100px',
@@ -43,5 +43,4 @@ function Spinner({size, color, thickness, className, id}: PropsType) {
     </div>
   )
 }
-const XR = { Spinner };
-export default XR;
+export default XRSpinner;
