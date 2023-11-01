@@ -13,6 +13,8 @@ type PropsType = {
   radius? : number|string,
   borderColor? : string,
   onChanged? : ((e:KeyboardEvent | PointerEvent | MouseEvent | Event) => void|any)|undefined
+  className? : string,
+  id? : string,
 };
 
 let Select = ({ ...p }: PropsType) => {
@@ -28,9 +30,13 @@ let Select = ({ ...p }: PropsType) => {
     borderWidth : '2px',
     borderColor : p.borderColor || 'transparent'
   }
-
+  const cls = p.className ? ` ${p.className}` : ''
   return (
-    <div className="xrselect_container" ref={selectionRef} >
+    <div
+      className={"xrselect_container" + cls} 
+      id={p.id ? p.id : ''} 
+      ref={selectionRef}
+    >
       <button
         className={`xrselect_toggle${isExpanded ? " xrselect_active" : ""}`}
         style={style}

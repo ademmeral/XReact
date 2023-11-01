@@ -6,8 +6,8 @@ type PropsType = {
   size?:number,
   color?:string,
   thickness?:number,
-  className : string,
-  id: string|number
+  className ?: string,
+  id?: string|number
 }
 function Spinner({size, color, thickness, className, id}: PropsType) {
   const wrappertStyle = {
