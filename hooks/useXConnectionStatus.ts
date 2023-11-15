@@ -1,3 +1,5 @@
+'use client';
+// https://github.com/ademmeral/XReact/hooks/useXConnectionStatus
 import { useState, useEffect } from 'react'
 
 function useConnectionStatus() {

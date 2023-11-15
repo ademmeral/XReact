@@ -1,3 +1,5 @@
+'use client';
+// https://github.com/ademmeral/XReact/hooks/useResizeObserver
 import { useEffect, useState } from "react";
 
 function useResizeObserver(ref: React.RefObject<HTMLDivElement>) {

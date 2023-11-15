@@ -1,0 +1,37 @@
+*,
+*::after,
+*::before{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root,
+.App{
+  width: 100%;
+  min-height: 100vh;
+}
+.App{
+  display: grid;
+  place-content: center;
+}
+.xrcountdown{
+  width: max-content;
+  height: max-content;
+  position: relative;
+}
+.xrcountdown :where(span){ /* "where" is to reduce the specificity */
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  font-weight: 500;
+  font-size: 2rem;
+}
+.xrcountdown circle{
+  fill: transparent;
+  stroke-linecap: round;
+}

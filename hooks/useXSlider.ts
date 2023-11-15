@@ -1,3 +1,5 @@
+'use client';
+
 // https://github.com/ademmeral/XReact/hooks/useXSlider
 
 import { useEffect } from "react";

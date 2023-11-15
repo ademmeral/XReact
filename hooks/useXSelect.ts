@@ -1,3 +1,5 @@
+'use client';
+
 // https://github.com/ademmeral/XReact/hooks/useXSelect
 
 import { useEffect, useState, useRef } from "react"
