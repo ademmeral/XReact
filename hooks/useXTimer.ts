@@ -1,8 +1,8 @@
 'use client';
-// https://github.com/ademmeral/XReact/hooks/useTimer
+// https://github.com/ademmeral/XReact/hooks/useXTimer
 import { useCallback, useEffect, useRef, useState } from "react";
 
-export function useTimer(from = 60, to = 0, elapsedTime = 1000) {
+export function useXTimer(from = 60, to = 0, elapsedTime = 1000) {
   const [timer, setTimer] = useState(from);
   const reqIdRef = useRef<number>(0);
   const countRef = useRef<number>(from);
@@ -50,7 +50,7 @@ export function useTimer(from = 60, to = 0, elapsedTime = 1000) {
 /* =============== EXAMPLE USAGE ================= */
 /*
 function App() {
-  const {timer, start, stop, reset} = useTimer(60)
+  const {timer, start, stop, reset} = useXTimer(60)
   console.log(timer)
 
   const strokeDash = { strokeDashoffset: (2 * Math.PI * r) - ((2 * Math.PI * r) * timer) / 60 }

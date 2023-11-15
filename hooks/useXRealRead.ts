@@ -1,17 +1,17 @@
 'use client';
-// https://github.com/ademmeral/XReact/hooks/useRealRead.ts
+// https://github.com/ademmeral/XReact/hooks/useXRealRead.ts
 
 import { useEffect, useState, useRef, MutableRefObject } from "react";
 
 
-type UseRealReadHook = (ref: MutableRefObject<any>, readSpeed: number) => {
+type UseXRealRead = (ref: MutableRefObject<any>, readSpeed: number) => {
   startTime: number,
   elapsedTime: number,
   isRead: boolean | null,
   restart : () => void
 };
 
-export const useRealRead: UseRealReadHook = (ref, readSpeed) => {
+export const useXRealRead: UseXRealRead = (ref, readSpeed) => {
   const [isRead, setIsRead] = useState<boolean | null>(null);
   const [elapsedTime, setElapsedTime] = useState<number>(0);
   const [observer, setObserver] = useState(new IntersectionObserver(callback))
@@ -59,7 +59,7 @@ export const useRealRead: UseRealReadHook = (ref, readSpeed) => {
 /*
 function App() {
   const articleRef = useRef(null)
-  const {isRead, elapsedTime, startTime, restart} = useRealRead(articleRef, 5 * 1000);
+  const {isRead, elapsedTime, startTime, restart} = useXRealRead(articleRef, 5 * 1000);
   
   useEffect(() => {
 
