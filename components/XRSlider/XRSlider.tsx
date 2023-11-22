@@ -4,7 +4,7 @@
 
 import { useRef } from "react";
 import { useSlider } from "./useXSlider"
-import './rsl.css';
+import './xrslider.css';
 
 type PropsType = {
   children : React.ReactNode,
