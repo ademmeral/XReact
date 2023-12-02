@@ -2,10 +2,10 @@
 // https://github.com/ademmeral/XReact/hooks/useResizeObserver
 import { useEffect, useState } from "react";
 
-function useResizeObserver(ref: React.RefObject<HTMLDivElement>) {
+export const useXResizeObserver:UseXResizeObserverType = (ref) => {
   const [size, setSize] = useState({
-    width: ref && ref.current ? ref.current.clientWidth : null,
-    height: ref && ref.current ? ref.current.clientHeight : null
+    width: ref.current.clientWidth,
+    height: ref.current.clientHeight
   })
   useEffect(() => {
     function callback(entries: ResizeObserverEntry[]): void {
@@ -21,9 +21,7 @@ function useResizeObserver(ref: React.RefObject<HTMLDivElement>) {
     return () => { observer.disconnect() };
   }, [])
   return size
-}
-
-export default useResizeObserver
+};
 
 
 // /***** USAGE OF useResizeObserver *****/

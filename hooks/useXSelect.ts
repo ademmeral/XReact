@@ -1,19 +1,8 @@
-'use client';
-
 // https://github.com/ademmeral/XReact/hooks/useXSelect
-
 import { useEffect, useState, useRef } from "react"
 
-type PropTypes = {
-  ref : React.MutableRefObject<HTMLElement | null>,
-  onChanged ?: ((e:KeyboardEvent | PointerEvent | MouseEvent | Event) => void|any),
-  classNames : {
-    list : HTMLElement,
-    button: HTMLElement
-  }
-}
 
-function useXSelect({ ref, onChanged, classNames: { list, button } }: PropTypes) {
+export const useXSelect: UseXSelectType = (ref , onChanged) => {
   const [isExpanded, setIsExpanded] = useState(false);
   const [value, setValue] = useState('')
   const {current : changedEvent} = useRef(new Event('changed'));
@@ -22,13 +11,13 @@ function useXSelect({ ref, onChanged, classNames: { list, button } }: PropTypes)
   useEffect(() => {
     const element = ref.current as HTMLSelectElement; // Hssstt, between us
     // button & menu item
-    const btn = element.querySelector(`.${button}`) as HTMLElement;
-    const menu = element.querySelector(`.${list}`) as HTMLElement;
+    const btn = element.querySelector('button') as HTMLButtonElement;
+    const menu = element.querySelector('ul') as HTMLUListElement;
 
     // event handlers
     const handleButtonClick = (e:Event) => {  // button click
       e.stopPropagation();
-      setIsExpanded((p:boolean) => !p)
+      setIsExpanded(p => !p)
     };
 
 
@@ -108,5 +97,3 @@ function useXSelect({ ref, onChanged, classNames: { list, button } }: PropTypes)
 
   return [value, isExpanded];
 }
-
-export default useXSelect

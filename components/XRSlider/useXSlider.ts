@@ -3,7 +3,7 @@
 import { useEffect } from "react";
 import xSmoothScroll from "./xSmoothScroll";
 
-export function useSlider(ref: React.MutableRefObject<HTMLElement | null>) {
+export const useXSlider: UseXSliderType = (ref) => {
   
   useEffect(() => {
     const parentEvents: [string, EventListener | ((e: PointerEvent) => void)][] = []

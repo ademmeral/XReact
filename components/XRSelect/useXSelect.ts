@@ -1,10 +1,8 @@
 // https://github.com/ademmeral/XReact/hooks/useXSelect
 import { useEffect, useState, useRef } from "react"
 
-type ListenerType = ((e:KeyboardEvent | PointerEvent | MouseEvent | Event) => void|any)|undefined;
-type RefType = React.MutableRefObject<HTMLElement | null>;
 
-function useXSelect(ref: RefType , onChanged:ListenerType) {
+export const useXSelect: UseXSelectType = (ref , onChanged) => {
   const [isExpanded, setIsExpanded] = useState(false);
   const [value, setValue] = useState('')
   const {current : changedEvent} = useRef(new Event('changed'));
@@ -99,5 +97,3 @@ function useXSelect(ref: RefType , onChanged:ListenerType) {
 
   return [value, isExpanded];
 }
-
-export default useXSelect

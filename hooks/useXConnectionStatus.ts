@@ -2,7 +2,7 @@
 // https://github.com/ademmeral/XReact/hooks/useXConnectionStatus
 import { useState, useEffect } from 'react'
 
-function useConnectionStatus() {
+export function useXConnectionStatus() {
   const [isOnline, setIsOnline] = useState<boolean|null>(
     window != undefined ? window.navigator.onLine : null
   )
@@ -22,10 +22,7 @@ function useConnectionStatus() {
     }
    }, [])
   return isOnline
-}
-
-export default useConnectionStatus;
-
+};
 
 // /***** USAGE OF useConnectionStatus *****/
 

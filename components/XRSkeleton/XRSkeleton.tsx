@@ -1,19 +1,11 @@
-// https://github.com/ademmeral/XReact/components/XRSkeleton
-
 'use client'; // for nextjs
 
+// https://github.com/ademmeral/XReact/components/XRSkeleton
+
+import * as React from 'react';
 import './rske.css';
 
-type PropsType = {
-  h?: number,
-  w?:number,
-  amount : Required<number>,
-  rounded ?: number|string,
-  className ?: string,
-  id?: string,
-}
-
-function XRSkeleton({h, w, amount, rounded, className, id} : PropsType) {
+export function XRSkeleton({h, w, amount, rounded, className, id} : XRSkeletonType) {
 
   const styleLi = {
     borderRadius : !rounded ? 0 : typeof rounded === 'string' ? rounded : `${rounded}px`,
@@ -37,5 +29,4 @@ function XRSkeleton({h, w, amount, rounded, className, id} : PropsType) {
       </ul>
     </div>
   )
-}
-export default XRSkeleton
+};

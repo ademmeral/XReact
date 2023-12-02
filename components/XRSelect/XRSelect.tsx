@@ -1,23 +1,11 @@
 // https://github.com/ademmeral/XReact/components/XRSelect
-
+import * as React from 'react';
 import { useRef } from "react";
-import useXSelect from "./useXSelect";
+import { useXSelect } from "./useXSelect";
 import './xrselect.css';
 
-type PropsType = {
-  defaultValue: string;
-  data: (string | number | Record<string, any>)[];
-  itemKey?: string;
-  textColor? : string,
-  backgroundColor? : string,
-  radius? : number|string,
-  borderColor? : string,
-  onChanged? : ((e:KeyboardEvent | PointerEvent | MouseEvent | Event) => void|any)|undefined
-  className? : string,
-  id? : string,
-};
 
-let XRSelect = ({ ...p }: PropsType) => {
+export const XRSelect = ({ ...p }: XRSelectType) => {
   const selectionRef = useRef(null);
   const [selectedValue, isExpanded] = useXSelect(selectionRef, p.onChanged);
   // console.log('rendering...')
@@ -81,7 +69,6 @@ let XRSelect = ({ ...p }: PropsType) => {
     </div>
   );
 }
-export default XRSelect;
 
 /***** EXAMPLE USAGE *****/
 /*

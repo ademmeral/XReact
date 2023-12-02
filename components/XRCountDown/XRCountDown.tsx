@@ -1,19 +1,13 @@
 'use client';
 // https://github.com/ademmeral/XReact/components/XRCountDown
+
+import * as React from 'react';
 import { useEffect, useRef } from 'react';
-import { useTimer } from '../hooks/useTimer';
+import { useXTimer } from './useXTimer';
 import './xrcountdown.css';
 
-export type PropsType = {
-  from ?: number,
-  size?: number,
-  color? : string,
-  thickness? : number,
-  to? : number,
-  elapsedTime? : number,
-}
-export function XRCountDown({ from, size, color, thickness, to, elapsedTime}: PropsType) {
-  const {timer, start, stop, reset} = useTimer(from, to, elapsedTime)
+export function XRCountDown({ from, size, color, thickness, to, elapsedTime}: XRCountDownType) {
+  const {timer, start, stop, reset} = useXTimer(from, to, elapsedTime)
   const {current : setValues} = useRef({
     from : from || 60,
     to : to || 0,

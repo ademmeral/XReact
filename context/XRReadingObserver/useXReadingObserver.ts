@@ -1,51 +1,24 @@
 'use client';
 // https://github.com/ademmeral/XReact/hooks/useXReadObserver.ts
 
-import { useEffect, useState, MutableRefObject } from "react";
-// import xInterval from './xInterval';
+import { useEffect, useState } from "react";
+import { useXInterval } from "./useXInterval";
 
-type UseXReadingObserver = (
-  refs: { main: MutableRefObject<any>, lastChild: MutableRefObject<any> }, 
-  readSpeed: number
-) => {
-  startTime: number,
-  elapsedTime: number,
-  isRead: boolean | null,
-  restart : () => void
-};
-
-function xInterval(callback:any, interval:number) {
-  let startTime = 0;
-  let reqId:any;
-  function loop(timestamp:any) {
-    if (!startTime) {
-      startTime = timestamp;
-    }
-
-    const elapsed = timestamp - startTime;
-
-    if (elapsed >= interval) {
-      callback();
-      startTime = timestamp;
-    }
-
-    reqId = window.requestAnimationFrame(loop);
-  }
-
-  reqId = window.requestAnimationFrame(loop);
-
-  return {
-    clear : function(){cancelAnimationFrame(reqId)}
-  }
-}
-
-export const useXReadingObserver: UseXReadingObserver = ({main, lastChild}, readSpeed) => {
+export const useXReadingObserver: UseXReadingObserverType = ({main, lastChild}, readSpeed) => {
   const [isRead, setIsRead] = useState<boolean | null>(null);
   const [elapsedTime, setElapsedTime] = useState<number>(0);
-  const [observer, setObserver] = useState(new IntersectionObserver(callback, {threshold : 0, rootMargin: '0px'}))
-  const [interval, setIntv] = useState<ReturnType<typeof xInterval>>();
+  const [observer, setObserver] = useState(
+    new IntersectionObserver(
+      callback, {threshold : 0, rootMargin: '0px'}
+    )
+  );
+  const [interval, setIntv] = useState<ReturnType<typeof useXInterval>>();
   const [startTime, setStartTime] = useState<number>(0);
-  const [refObserver, setRefObserver] = useState(new IntersectionObserver(refCallback, {threshold : 1, rootMargin: '0px'}))
+  const [refObserver, setRefObserver] = useState(
+    new IntersectionObserver(
+      refCallback, {threshold : 1, rootMargin: '0px'}
+    )
+  );
 
 
   function callback (entries:IntersectionObserverEntry[]) {
@@ -75,7 +48,7 @@ export const useXReadingObserver: UseXReadingObserver = ({main, lastChild}, read
     if (entries[0].isIntersecting) {
       if (main.current.clientHeight <= window.innerHeight) {
         setStartTime(Date.now())
-        const intv = xInterval(() => {
+        const intv = useXInterval(() => {
           setElapsedTime(p => p += 2000);
         }, 2000);
         setIntv(intv)

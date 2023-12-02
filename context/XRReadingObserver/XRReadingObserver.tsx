@@ -1,18 +1,20 @@
 'use client';
 
+import * as React from 'react';
 import { useRef, createContext, useContext } from "react"
 import { useXReadingObserver } from "./useXReadingObserver";
 
-const XRReadingObserverContext = createContext<ReturnType<typeof useXReadingObserver>|null>(null)
+const XRReadingObserverContext = createContext<XRReadingObserverContext>(null)
 
-function XRReadingObserver({ children, readSpeed }: {readSpeed:number, children: React.ReactNode }) {
+
+function XRReadingObserver({ children, readSpeed }: XRReadingObserverProps ) {
   const articleRef = useRef(null);
   const lastChildRef = useRef(null);
   const {isRead, elapsedTime, startTime, restart} = useXReadingObserver(
     {
       main : articleRef, 
       lastChild : lastChildRef
-    }, readSpeed);
+    }, readSpeed || 1000 * 60 * 60);
 
   return (
     <XRReadingObserverContext.Provider value={{isRead, elapsedTime, startTime, restart}}>
@@ -26,5 +28,5 @@ function XRReadingObserver({ children, readSpeed }: {readSpeed:number, children:
 
 export default XRReadingObserver;
 
-export const useReadObserverContext = () => 
+export const useXReadingObserverContext = () => 
   useContext(XRReadingObserverContext) as ReturnType<typeof useXReadingObserver>;

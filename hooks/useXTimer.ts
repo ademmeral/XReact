@@ -2,7 +2,7 @@
 // https://github.com/ademmeral/XReact/hooks/useXTimer
 import { useCallback, useEffect, useRef, useState } from "react";
 
-export function useXTimer(from = 60, to = 0, elapsedTime = 1000) {
+export const useXTimer: UseXTimerType = (from = 60, to = 0, elapsedTime = 1000) => {
   const [timer, setTimer] = useState(from);
   const reqIdRef = useRef<number>(0);
   const countRef = useRef<number>(from);
@@ -34,6 +34,7 @@ export function useXTimer(from = 60, to = 0, elapsedTime = 1000) {
 
     reqIdRef.current = window.requestAnimationFrame(loop);
   }, []);
+  
   const stop = useCallback(() => window.cancelAnimationFrame(reqIdRef.current), [])
   const reset = useCallback(() => {
     if (reqIdRef.current !== 0) {

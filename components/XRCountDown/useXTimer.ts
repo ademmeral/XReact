@@ -1,9 +1,10 @@
 'use client';
 
+import * as React from 'react';
 import { useCallback, useEffect, useRef, useState } from "react";
 
-export function useTimer(from = 60, to = 0, elapsedTime = 1000) {
-  const [timer, setTimer] = useState(from);
+export const useXTimer: UseXTimerType = (from = 60, to = 0, elapsedTime = 1000) => {
+  const [timer, setTimer] = useState<number>(from);
   const reqIdRef = useRef<number>(0);
   const countRef = useRef<number>(from);
 
@@ -43,7 +44,7 @@ export function useTimer(from = 60, to = 0, elapsedTime = 1000) {
     }
   }, []);
   
-  return { timer : countRef.current, start, stop , reset };
+  return { timer, start, stop , reset };
 }
 
 

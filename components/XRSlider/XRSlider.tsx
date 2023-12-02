@@ -1,22 +1,15 @@
+'use client'; // for nextjs
 // https://github.com/ademmeral/XReact/components/XRSlider
 
-'use client'; // for nextjs
-
+import * as React from 'react';
 import { useRef } from "react";
-import { useSlider } from "./useXSlider"
+import { useXSlider } from "./useXSlider"
 import './xrslider.css';
 
-type PropsType = {
-  children : React.ReactNode,
-  left? : React.ReactNode,
-  right? : React.ReactNode,
-  className? : string,
-  id? : string,
-}
 
-function XRSlider({children, left, right, className, id}: PropsType) {
+export function XRSlider({children, left, right, className, id}: XRSliderType) {
   const ref = useRef(null);
-  useSlider(ref) // returns nothing = undefined
+  useXSlider(ref) // returns nothing = undefined
   return (
     <div 
       className={`xrslider_container` + className ? ` ${className}` : ''} 
@@ -39,5 +32,3 @@ function XRSlider({children, left, right, className, id}: PropsType) {
     </div>
   )
 }
-
-export default XRSlider;
